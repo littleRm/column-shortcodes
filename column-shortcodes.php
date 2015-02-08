@@ -198,7 +198,7 @@ class Codepress_Column_Shortcodes {
 			$name = str_replace( $this->prefix, '', $name );
 		}
 
-		$output = "<div{$id} class='content-column {$name}{$class}'>{$content}</div>";
+		$output = "<div{$id} class='content-column {$name}{$class} ".$this->classier($name)."'>{$content}</div>";
 
 		if ( false !== $pos ) {
 			$output .= "<div class='clear_column'></div>";
@@ -462,6 +462,26 @@ class Codepress_Column_Shortcodes {
 		}
 
 		return do_shortcode( shortcode_unautop( trim( $content ) ) );
+	}
+	
+
+	/**
+	 * Custom added function
+	 *
+	 * 
+	 */
+	function classier($shortcode){
+		
+		$classy = array(
+			'full_width'	=> 'grid-full',
+			'one_half'	=> 'grid-half',
+			'one_third'	=> 'grid-third',
+			'one_fourth'	=> 'grid-fourth',
+			'two_third'	=> 'grid-two-thirds',
+			'three_fourth'	=> 'grid-three-fourths'
+		);
+		return $classy[$shortcode];
+		
 	}
 }
 
